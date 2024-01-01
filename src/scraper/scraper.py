@@ -65,6 +65,14 @@ class UrlBase(object):
                     url = f"https://www.ftf.org.tn/fr/wp-content/uploads/2020/07/LIGUE-II-1e%CC%80re-Journe%CC%81e-20192020.pdf"
                 elif match_day in range(2, 11):
                     url = f"https://www.ftf.org.tn/fr/wp-content/uploads/2020/07/LIGUE-II-{match_day}e%CC%80me-Journe%CC%81e-20192020.pdf"
+        elif season == "18-19":
+            if league == "l1" and tournament_type == "regular_season":
+                if match_day == 1:
+                    url = "https://www.ftf.org.tn/fr/wp-content/uploads/2019/01/LIGUE-I-1e%CC%80re-Journe%CC%81e.pdf"
+                elif match_day in [2, 6, 13]:
+                    url = f"https://www.ftf.org.tn/fr/wp-content/uploads/2019/01/LIGUE-I-{match_day}e%CC%80me-Journe%CC%81e-1.pdf"
+                elif match_day in [3, 4, 5, 7, 8, 9, 10, 11, 12]:
+                    url = f"https://www.ftf.org.tn/fr/wp-content/uploads/2019/01/LIGUE-I-{match_day}e%CC%80me-Journe%CC%81e.pdf"
 
         return url
 
@@ -156,6 +164,14 @@ class Scraper(object):
                     self.save_match_file(league=league, season=season, tournament_type=tournament_type,
                                          match_day=match_day)
 
+    def save_18_19_season_games(self):
+        season = '18-19'
+        league = 'l1'
+        tournament_type = "regular_season"
+        for match_day in range(1, 14):
+            self.save_match_file(league=league, season=season, tournament_type=tournament_type,
+                                 match_day=match_day)
+
 
 scr = Scraper()
-scr.save_19_20_season_games()
+scr.save_18_19_season_games()
