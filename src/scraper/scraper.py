@@ -78,7 +78,7 @@ class UrlBase(object):
 
     @staticmethod
     def save_path_formatter(league, season, tournament_type, match_day):
-        base_path = "C:/Users/Administrator/PycharmProjects/tn-football-db/pdf_files/"
+        base_path = "/match_files/"
         file_save_path = f"{base_path}{season}/{league}/{tournament_type}_j{match_day}.pdf"
         return file_save_path
 
